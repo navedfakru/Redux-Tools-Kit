@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, Image, Button } from 'react-native';
-import { addToCart, removeToCart } from './redux/action';
+import { addToCart, removeFromCart } from './redux/action';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 
@@ -12,17 +12,18 @@ const Product = ({item}) => {
   const handleAddToCart = (item) => {
     dispatch(addToCart(item))
   }
-  const handleRemoveToCart = (item) => {
-    dispatch(removeToCart(item))
+  const handleRemoveFromCart = (item) => {
+    dispatch(removeFromCart(item.name))
   }
 
   useEffect(()=> {
-    if(cartItems && cartItems.length){
-      cartItems.forEach((element) => {
-        if(element.name === item.name){
-          setIsAdded(true)
-        }
-      })
+    let result = cartItems.filter((element) => {
+      return element.name === item.name
+    })
+    if(result.length){
+      setIsAdded(true)
+    }else {
+      setIsAdded(false)
     }
   }, [cartItems])
 
@@ -37,7 +38,7 @@ const Product = ({item}) => {
     />
     {
       isAdded ? 
-      <Button title="Remove to Card" onPress={() => handleRemoveToCart(item)} /> 
+      <Button title="Remove to Card" onPress={() => handleRemoveFromCart(item)} /> 
       :
       <Button title="Add to Card" onPress={() => handleAddToCart(item)} /> 
     }

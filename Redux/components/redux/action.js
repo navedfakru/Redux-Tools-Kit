@@ -1,4 +1,4 @@
-import { Add_To_Cart, Remove_To_Cart } from "./constants";
+import { Add_To_Cart, Remove_FROM_Cart } from "./constants";
 
 export function addToCart(itme) {
   return {
@@ -6,9 +6,9 @@ export function addToCart(itme) {
     data: itme
   }
 }
-export function removeToCart(itme) {
+export function removeFromCart(itme) {
   return {
-    type: Remove_To_Cart,
+    type: Remove_FROM_Cart,
     data: itme
   }
 }
