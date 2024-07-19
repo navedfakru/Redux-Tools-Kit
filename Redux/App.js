@@ -1,6 +1,8 @@
 import { StyleSheet, Text, View, Image, ScrollView, Button } from "react-native";
 import Header from "./components/Header";
 import Product from "./components/Product";
+import { Provider } from "react-redux";
+import store from "./components/redux/store";
 
 const App = () => {
   const products = [
@@ -25,12 +27,14 @@ const App = () => {
   ];
 
   return (
-    <View style={styles.container}>
-      <Header />
-      <ScrollView>
-        {products.map((item) => <Product item={item} />)}
-      </ScrollView>
-    </View>
+    <Provider store={store}>
+      <View style={styles.container}>
+        <Header />
+        <ScrollView>
+          {products.map((item) => <Product item={item} />)}
+        </ScrollView>
+      </View>
+    </Provider>
   );
 };
 
