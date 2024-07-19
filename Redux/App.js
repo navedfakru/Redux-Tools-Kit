@@ -1,20 +1,43 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView, Button } from "react-native";
+import Header from "./components/Header";
+import Product from "./components/Product";
 
-export default function App() {
+const App = () => {
+  const products = [
+    {
+      name: "Samsung Mobile",
+      color: "white",
+      price: 30000,
+      image:"https://m.media-amazon.com/images/G/01/appcore/beats/AMZ_FamilyStripe_iPad_9_Gen._CB558419462_.png",
+    },
+    {
+      name: "Apple Mobile",
+      color: "black",
+      price: 130000,
+      image:"https://m.media-amazon.com/images/G/01/appcore/beats/AMZ_FamilyStripe_iPad_9_Gen._CB558419462_.png",
+    },
+    {
+      name: "Nokia Mobile",
+      color: "green",
+      price: 20000,
+      image:"https://m.media-amazon.com/images/G/01/appcore/beats/AMZ_FamilyStripe_iPad_9_Gen._CB558419462_.png",
+    },
+  ];
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Header />
+      <ScrollView>
+        {products.map((item) => <Product item={item} />)}
+      </ScrollView>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
+
+export default App;
