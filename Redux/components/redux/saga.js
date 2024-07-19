@@ -4,8 +4,8 @@ import { SET_USER_DATA, USER_LIST } from "./constants";
 function* userList() {
   const url = "https://dummyjson.com/users"
   let data = yield fetch(url);
-  data = yield data.json();
-  yield put({type: SET_USER_DATA, data})
+  data = yield data.json()
+  yield put({type: SET_USER_DATA,data})
 }
 
 function* SagaData() {

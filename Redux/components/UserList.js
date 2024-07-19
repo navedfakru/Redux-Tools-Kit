@@ -12,11 +12,15 @@ const UserList = () => {
     dispatch(getUserList())
   }, [])
 
-  console.log("In Commponent data: ", userList)
+  let userListData = JSON.stringify(userList);
 
   return (
     <View style={styles.container}>
-      <Text>User List Screen</Text>
+      {
+        userList.length ?
+        userList.map((item) => (<Text>{item.firstName}</Text>))
+        :null
+      }
     </View>
   );
 }
