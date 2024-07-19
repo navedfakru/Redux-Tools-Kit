@@ -11,8 +11,8 @@ const Header = () => {
   }, [cartData])
 
   return (
-    <View style={styles.container}>
-      <Text style={{fontSize: 34, padding: 20, textAlign: 'right', fontWeight: 'bold', backgroundColor: 'orange', color: 'white'}}>{cartItems}</Text>
+    <View style={[styles.container, {padding: 20, backgroundColor: 'orange'}]}>
+      <Text style={{fontSize: 34, alignSelf: 'flex-end', fontWeight: 'bold', color: 'white'}}>{cartItems}</Text>
     </View>
   );
 }
